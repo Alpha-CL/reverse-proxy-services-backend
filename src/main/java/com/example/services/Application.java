@@ -1,4 +1,4 @@
-package com.example.reverseProxyServices;
+package com.example.services;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
