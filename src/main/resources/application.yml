@@ -11,7 +11,7 @@ spring:
     username: root
     password: Liang1992@12
     driver-class-name: com.mysql.cj.jdbc.Driver
-    initialization-mode: always
+    initialization-mode: embedded # always | embedded
     schema:
       - classpath:sql/schema.sql
       - classpath:sql/data.sql
