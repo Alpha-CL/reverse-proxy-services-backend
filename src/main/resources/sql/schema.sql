@@ -81,6 +81,7 @@ CREATE TABLE `fk_t_envs_servers`
 -- Records of t_envs_servers
 -- ----------------------------------------
 
+
 -- ----------------------------------------
 -- Table structure for service_groups
 -- ----------------------------------------
@@ -125,6 +126,7 @@ CREATE TABLE `services`
 -- ----------------------------------------
 -- Records of services
 -- ----------------------------------------
+
 
 
 ALTER TABLE `envs` ADD CONSTRAINT `fk_t_envs_servers` FOREIGN KEY (`server_id`) REFERENCES `servers` (`id`);
