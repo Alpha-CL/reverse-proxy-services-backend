@@ -15,6 +15,20 @@ spring:
     schema:
       - classpath:sql/schema.sql
       - classpath:sql/data.sql
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.alphal.cn:8848/ # nacos 配置中心( 只支持 http, 需暴露 8848 和 9848( 该端口为偏移所得 )
+        namespace: 98d73a4e-d041-4357-b2ca-5b17c416683e
+        username: nacos
+        password: nacos
+        group: DEFAULT_GROUP
+      config:
+        server-addr: nacos.alphal.cn:8848/
+        file-extension: yml # 配置文件格式
+        namespace: 98d73a4e-d041-4357-b2ca-5b17c416683e
+        username: nacos
+        password: nacos
 
 mybatis:
   mapper-locations: classpath:mappers/*.xml # 扫描 mapper 文件
