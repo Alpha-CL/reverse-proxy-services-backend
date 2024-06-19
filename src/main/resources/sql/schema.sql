@@ -1,9 +1,13 @@
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
 -- ---------------------------------------------------------------------------------------------------------------------
 -- Table structure for envs
 -- ---------------------------------------------------------------------------------------------------------------------
 DROP TABLE
     IF
-        EXISTS `envs`;
+    EXISTS `envs`;
 CREATE TABLE `envs`
 (
     `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -14,7 +18,7 @@ CREATE TABLE `envs`
     PRIMARY KEY (`id`),
     UNIQUE KEY `id_unique` (`id`) COMMENT '唯一索引'
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 0
+  AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci
     COMMENT = '多环境';
@@ -27,7 +31,7 @@ CREATE TABLE `envs`
 -- ---------------------------------------------------------------------------------------------------------------------
 DROP TABLE
     IF
-        EXISTS `servers`;
+    EXISTS `servers`;
 CREATE TABLE `servers`
 (
     `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -40,7 +44,7 @@ CREATE TABLE `servers`
     PRIMARY KEY (`id`),
     UNIQUE KEY `id_unique` (`id`) COMMENT '唯一索引'
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 0
+  AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci
     COMMENT = '多个环境中有多个服务器';
@@ -53,7 +57,7 @@ CREATE TABLE `servers`
 -- ---------------------------------------------------------------------------------------------------------------------
 DROP TABLE
     IF
-        EXISTS `t_envs_servers`;
+    EXISTS `t_envs_servers`;
 CREATE TABLE `t_envs_servers`
 (
     `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -67,7 +71,7 @@ CREATE TABLE `t_envs_servers`
     CONSTRAINT `fk_env_id` FOREIGN KEY (`env_id`) REFERENCES `envs` (`id`),
     CONSTRAINT `fk_server_id` FOREIGN KEY (`server_id`) REFERENCES `servers` (`id`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 0
+  AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci
     COMMENT = '';
@@ -80,7 +84,7 @@ CREATE TABLE `t_envs_servers`
 -- ---------------------------------------------------------------------------------------------------------------------
 DROP TABLE
     IF
-        EXISTS `services`;
+    EXISTS `services`;
 CREATE TABLE `services`
 (
     `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -105,7 +109,7 @@ CREATE TABLE `services`
 -- ---------------------------------------------------------------------------------------------------------------------
 DROP TABLE
     IF
-        EXISTS `service_groups`;
+    EXISTS `service_groups`;
 CREATE TABLE `service_groups`
 (
     `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -131,7 +135,7 @@ CREATE TABLE `service_groups`
 -- ---------------------------------------------------------------------------------------------------------------------
 DROP TABLE
     IF
-        EXISTS `t_servers_service_groups`;
+    EXISTS `t_servers_service_groups`;
 CREATE TABLE `t_servers_service_groups`
 (
     `id`               BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -153,4 +157,4 @@ CREATE TABLE `t_servers_service_groups`
 -- Records of t_servers_service_groups
 -- ---------------------------------------------------------------------------------------------------------------------
 
-
+SET FOREIGN_KEY_CHECKS = 1;
