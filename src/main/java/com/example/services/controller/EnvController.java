@@ -10,7 +10,7 @@ import java.util.List;
 public class EnvController {
 
     @PostMapping("")
-    public Resp<Void> createEnv(@RequestBody Env env) {
+    public Resp<Void> addEnv(@RequestBody Env env) {
         return Resp.success(null);
     }
 
