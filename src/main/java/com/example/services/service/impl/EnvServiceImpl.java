@@ -45,7 +45,10 @@ public class EnvServiceImpl implements EnvService {
     @Transactional
     public EnvDto getEnvById(Long id) {
         Env env = envMapper.getEnvById(id);
-        return new EnvDto(env.getId(), env.getName());
+        EnvDto envDto = new EnvDto();
+        envDto.setId(env.getId());
+        envDto.setLabel(env.getName());
+        return envDto;
     }
 
     @Override
@@ -81,4 +84,5 @@ public class EnvServiceImpl implements EnvService {
                 .collect(Collectors.toList());
         return envDtoList;
     }
+
 }
