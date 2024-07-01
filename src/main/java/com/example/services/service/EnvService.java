@@ -1,4 +1,6 @@
 package com.example.services.service;
 
-public class EnvService {
+
+public interface EnvService {
+
 }

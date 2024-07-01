@@ -1,4 +1,10 @@
 package com.example.services.service.impl;
 
-public class EnvServiceImpl {
+
+import com.example.services.service.EnvService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EnvServiceImpl implements EnvService {
+
 }

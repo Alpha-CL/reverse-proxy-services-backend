@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class GlobalExceptionHandler {
 
     /**
-     * 处理ApiException类或其子类抛出的异常
+     * 处理 ApiException 类或其子类抛出的异常
      */
     @ResponseBody
     @ExceptionHandler(value = ApiException.class)
@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 处理方法参数校验失败抛出的MethodArgumentNotValidException异常
+     * 处理方法参数校验失败抛出的 MethodArgumentNotValidException 异常
      */
     @ResponseBody
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
@@ -39,7 +39,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 处理数据绑定失败抛出的BindException异常
+     * 处理数据绑定失败抛出的 BindException 异常
      */
     @ResponseBody
     @ExceptionHandler(value = BindException.class)

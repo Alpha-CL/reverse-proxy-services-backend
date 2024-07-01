@@ -1,4 +1,4 @@
 package com.example.services.entity;
 
-public class Env {
+public class Env extends BaseEntity {
 }
