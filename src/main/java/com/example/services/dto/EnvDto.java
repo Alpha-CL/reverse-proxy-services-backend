@@ -3,12 +3,12 @@ package com.example.services.dto;
 
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Getter
-@Setter
+@Data
 public class EnvDto {
 
     private int id;

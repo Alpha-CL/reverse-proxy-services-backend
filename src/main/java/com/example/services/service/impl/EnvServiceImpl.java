@@ -10,13 +10,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
 public class EnvServiceImpl implements EnvService {
 
+    private final EnvMapper envMapper;
+
     @Autowired
-    private EnvMapper envMapper;
+    public EnvServiceImpl(EnvMapper envMapper) {
+        this.envMapper = envMapper;
+    }
 
     @Override
     @Transactional
@@ -65,8 +70,15 @@ public class EnvServiceImpl implements EnvService {
             String queryCondition
     ) {
         int offset = (currentPage - 1) * pageSize;
-        return null;
-//        return (List<EnvDto>) envMapper.getEnvByPage(pageSize, offset, queryCondition);
+        List<Env> envList = envMapper.getEnvsByPage(pageSize, offset, queryCondition);
+        List<EnvDto> envDtoList = envList.stream()
+                .map(env -> {
+                    EnvDto envDto = new EnvDto();
+                    envDto.setId(env.getId());
+                    envDto.setLabel(env.getName());
+                    return envDto;
+                })
+                .collect(Collectors.toList());
+        return envDtoList;
     }
-
 }

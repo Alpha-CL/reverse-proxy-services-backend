@@ -6,9 +6,6 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 
-
-
-
 @Mapper
 public interface EnvMapper {
 
@@ -20,16 +17,15 @@ public interface EnvMapper {
 
     public Env getEnvById(@Param("id") Long id);
 
-    public Void batchAddEnvs(@Param("env") List<Env> envList);
+    public Void batchAddEnvs(@Param("envList") List<Env> envList);
 
     public Void batchDeleteEnvs(@Param("ids") List<Long> ids);
 
-    public Void batchUpdateEnvs(@Param("env") List<Env> envList);
+    public Void batchUpdateEnvs(@Param("envList") List<Env> envList);
 
-    public List<Env> getEnvByPage(
-            @Param("currentPage") int currentPage,
-            @Param("offset") int pageSize,
+    public List<Env> getEnvsByPage(
+            @Param("pageSize") int pageSize,
+            @Param("offset") int offset,
             @Param("queryCondition") String queryCondition
     );
-
 }

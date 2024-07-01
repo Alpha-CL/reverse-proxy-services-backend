@@ -5,12 +5,12 @@ import lombok.*;
 import java.io.Serializable;
 
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Getter
-@Setter
+@Data
 public class Env implements Serializable {
 
     private int id;
