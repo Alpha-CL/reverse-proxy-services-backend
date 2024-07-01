@@ -1,4 +1,19 @@
 package com.example.services.entity;
 
-public class Env extends BaseEntity {
+
+import lombok.*;
+import java.io.Serializable;
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Getter
+@Setter
+public class Env implements Serializable {
+
+    private int id;
+
+    private String name;
 }

@@ -11,7 +11,7 @@ DROP TABLE
 CREATE TABLE `envs`
 (
     `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `label`       VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
+    `name`       VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
     `create_date` DATETIME                                                      DEFAULT NULL COMMENT '创建时间',
     `modify_date` DATETIME                                                      DEFAULT NULL COMMENT '修改时间',
     `delete_date` DATETIME                                                      DEFAULT NULL COMMENT '删除时间',
@@ -35,7 +35,7 @@ DROP TABLE
 CREATE TABLE `servers`
 (
     `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `label`       VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
+    `name`       VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
     `protocol`    VARCHAR(255)                                                  DEFAULT NULL COMMENT '协议',
     `domain`      VARCHAR(255)                                                  DEFAULT NULL COMMENT '域名',
     `create_date` DATETIME                                                      DEFAULT NULL COMMENT '创建时间',
@@ -88,7 +88,7 @@ DROP TABLE
 CREATE TABLE `services`
 (
     `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `label`       VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
+    `name`       VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
     `port`        BIGINT                                                        DEFAULT NULL COMMENT '端口',
     `create_date` DATETIME                                                      DEFAULT NULL COMMENT '创建时间',
     `modify_date` DATETIME                                                      DEFAULT NULL COMMENT '修改时间',
@@ -114,7 +114,7 @@ CREATE TABLE `service_groups`
 (
     `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
     `service_id`  BIGINT NOT NULL COMMENT '外键',
-    `label`       VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
+    `name`       VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
     `create_date` DATETIME                                                      DEFAULT NULL COMMENT '创建时间',
     `modify_date` DATETIME                                                      DEFAULT NULL COMMENT '修改时间',
     `delete_date` DATETIME                                                      DEFAULT NULL COMMENT '删除时间',
