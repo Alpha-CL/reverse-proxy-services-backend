@@ -25,20 +25,20 @@ public class EnvServiceImpl implements EnvService {
 
     @Override
     @Transactional
-    public Void addEnv(Env env) {
-        return envMapper.addEnv(env);
+    public void addEnv(Env env) {
+        envMapper.addEnv(env);
     }
 
     @Override
     @Transactional
-    public Void deleteEnvById(Long id) {
-        return envMapper.deleteEnvById(id);
+    public void deleteEnvById(Long id) {
+        envMapper.deleteEnvById(id);
     }
 
     @Override
     @Transactional
-    public Void updateEnvById(Env env) {
-        return envMapper.updateEnvById(env);
+    public void updateEnvById(Env env) {
+        envMapper.updateEnvById(env);
     }
 
     @Override
@@ -52,18 +52,18 @@ public class EnvServiceImpl implements EnvService {
     }
 
     @Override
-    public Void batchAddEnvs(List<Env> envList) {
-        return envMapper.batchAddEnvs(envList);
+    public void batchAddEnvs(List<Env> envList) {
+         envMapper.batchAddEnvs(envList);
     }
 
     @Override
-    public Void batchDeleteEnvs(List<Long> ids) {
-        return envMapper.batchDeleteEnvs(ids);
+    public void batchDeleteEnvs(List<Long> ids) {
+        envMapper.batchDeleteEnvs(ids);
     }
 
     @Override
-    public Void batchUpdateEnvs(List<Env> envList) {
-        return envMapper.batchUpdateEnvs(envList);
+    public void batchUpdateEnvs(List<Env> envList) {
+        envMapper.batchUpdateEnvs(envList);
     }
 
     @Override

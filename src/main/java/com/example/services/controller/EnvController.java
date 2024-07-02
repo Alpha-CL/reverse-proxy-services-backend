@@ -22,17 +22,20 @@ public class EnvController {
 
     @PostMapping("")
     public Resp<Void> addEnv(@RequestBody Env env) {
-        return Resp.success(envService.addEnv(env));
+        envService.addEnv(env);
+        return Resp.success();
     }
 
     @DeleteMapping("/{id}")
     public Resp<Void> deleteEnvById(@PathVariable Long id) {
-        return Resp.success(envService.deleteEnvById(id));
+        envService.deleteEnvById(id);
+        return Resp.success();
     }
 
     @PutMapping("")
     public Resp<Void> updateEnvById(@RequestBody Env env) {
-        return Resp.success(envService.updateEnvById(env));
+        envService.updateEnvById(env);
+        return Resp.success();
     }
 
     @GetMapping("/{id}")
@@ -42,17 +45,20 @@ public class EnvController {
 
     @PostMapping("/list")
     public Resp<Void> batchAddEnvs(@RequestBody List<Env> envList) {
-        return Resp.success(envService.batchAddEnvs(envList));
+        envService.batchAddEnvs(envList);
+        return Resp.success();
     }
 
     @DeleteMapping("/list/{ids}")
     public Resp<Void> batchDeleteEnvs(@PathVariable List<Long> ids) {
-        return Resp.success(envService.batchDeleteEnvs(ids));
+        envService.batchDeleteEnvs(ids);
+        return Resp.success();
     }
 
     @PutMapping("/list")
     public Resp<Void> batchUpdateEnvs(@RequestBody List<Env> envList) {
-        return Resp.success(envService.batchUpdateEnvs(envList));
+        envService.batchUpdateEnvs(envList);
+        return Resp.success();
     }
 
     @GetMapping("/list")

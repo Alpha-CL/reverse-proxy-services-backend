@@ -1,7 +1,6 @@
 package com.example.services.controller;
 
 
-
 /**
  * 通用返回结果封装类
  */
@@ -26,6 +25,13 @@ public class Resp<T> {
         this.code = code;
         this.message = message;
         this.data = data;
+    }
+
+    /**
+     * 成功返回结果
+     */
+    public static Resp<Void> success() {
+        return new Resp<Void>(RespCode.SUCCESS.getCode(), RespCode.SUCCESS.getMessage(), null);
     }
 
     /**

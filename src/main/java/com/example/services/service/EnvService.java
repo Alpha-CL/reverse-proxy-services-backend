@@ -10,19 +10,19 @@ import java.util.List;
 
 public interface EnvService {
 
-    public Void addEnv(Env env);
+    public void addEnv(Env env);
 
-    public Void deleteEnvById(Long id);
+    public void deleteEnvById(Long id);
 
-    public Void updateEnvById(Env env);
+    public void updateEnvById(Env env);
 
     public EnvDto getEnvById(Long id);
 
-    public Void batchAddEnvs(List<Env> envList);
+    public void batchAddEnvs(List<Env> envList);
 
-    public Void batchDeleteEnvs(List<Long> ids);
+    public void batchDeleteEnvs(List<Long> ids);
 
-    public Void batchUpdateEnvs(List<Env> envList);
+    public void batchUpdateEnvs(List<Env> envList);
 
     public List<EnvDto> getEnvsByPage(int currentPage, int pageSize, String queryCondition);
 }

@@ -9,21 +9,21 @@ import java.util.List;
 @Mapper
 public interface EnvMapper {
 
-    public Void addEnv(@Param("env") Env env);
+    void addEnv(@Param("env") Env env);
 
-    public Void deleteEnvById(@Param("id") Long id);
+    void deleteEnvById(@Param("id") Long id);
 
-    public Void updateEnvById(@Param("env") Env env);
+    void updateEnvById(@Param("env") Env env);
 
-    public Env getEnvById(@Param("id") Long id);
+    Env getEnvById(@Param("id") Long id);
 
-    public Void batchAddEnvs(@Param("envList") List<Env> envList);
+    void batchAddEnvs(@Param("envList") List<Env> envList);
 
-    public Void batchDeleteEnvs(@Param("ids") List<Long> ids);
+    void batchDeleteEnvs(@Param("ids") List<Long> ids);
 
-    public Void batchUpdateEnvs(@Param("envList") List<Env> envList);
+    void batchUpdateEnvs(@Param("envList") List<Env> envList);
 
-    public List<Env> getEnvsByPage(
+    List<Env> getEnvsByPage(
             @Param("pageSize") int pageSize,
             @Param("offset") int offset,
             @Param("queryCondition") String queryCondition
