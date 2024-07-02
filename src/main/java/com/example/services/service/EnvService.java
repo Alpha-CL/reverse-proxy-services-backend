@@ -1,6 +1,7 @@
 package com.example.services.service;
 
 
+import com.example.services.controller.PageResp;
 import com.example.services.dto.EnvDto;
 import com.example.services.entity.Env;
 
@@ -23,5 +24,5 @@ public interface EnvService {
 
     void batchUpdateEnvs(List<Env> envList);
 
-    List<EnvDto> getEnvsByPage(int currentPage, int pageSize, String queryCondition);
+    PageResp<EnvDto> getEnvsByPage(int currentPage, int pageSize, String queryCondition);
 }

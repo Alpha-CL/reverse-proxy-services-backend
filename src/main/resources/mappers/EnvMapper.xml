@@ -79,4 +79,12 @@
         LIMIT #{pageSize} OFFSET #{offset}
     </select>
 
+    <select id="getEnvsTotal" resultType="java.lang.Long">
+        SELECT
+            COUNT(*)
+        FROM
+            `envs`
+    </select>
+
+
 </mapper>

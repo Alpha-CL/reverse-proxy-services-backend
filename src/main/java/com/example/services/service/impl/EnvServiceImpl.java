@@ -1,6 +1,7 @@
 package com.example.services.service.impl;
 
 
+import com.example.services.controller.PageResp;
 import com.example.services.dto.EnvDto;
 import com.example.services.entity.Env;
 import com.example.services.mapper.EnvMapper;
@@ -63,18 +64,19 @@ public class EnvServiceImpl implements EnvService {
 
     @Override
     public void batchUpdateEnvs(List<Env> envList) {
-        System.out.println("envList = " + envList);
         envMapper.batchUpdateEnvs(envList);
     }
 
     @Override
-    public List<EnvDto> getEnvsByPage(
+    public PageResp<EnvDto> getEnvsByPage(
             int currentPage,
             int pageSize,
             String queryCondition
     ) {
         int offset = (currentPage - 1) * pageSize;
+
         List<Env> envList = envMapper.getEnvsByPage(pageSize, offset, queryCondition);
+
         List<EnvDto> envDtoList = envList.stream()
                 .map(env -> {
                     EnvDto envDto = new EnvDto();
@@ -83,6 +85,13 @@ public class EnvServiceImpl implements EnvService {
                     return envDto;
                 })
                 .collect(Collectors.toList());
-        return envDtoList;
+
+        Long envsTotal = envMapper.getEnvsTotal();
+
+        PageResp<EnvDto> pageResp = new PageResp<EnvDto>();
+        pageResp.setData(envDtoList);
+        pageResp.setTotal(envsTotal);
+
+        return pageResp;
     }
 }

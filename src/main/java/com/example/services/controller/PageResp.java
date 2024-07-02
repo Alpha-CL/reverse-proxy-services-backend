@@ -14,12 +14,12 @@ public class PageResp<T> {
     /**
      * 分页数据
      */
-    private List<T> list;
+    private List<T> data;
 
-    public static <T> PageResp<T> restPage(List<T> list, long total) {
+    public static <T> PageResp<T> restPage(List<T> list, Long total) {
         PageResp<T> result = new PageResp<T>();
         result.setTotal(total);
-        result.setList(list);
+        result.setData(list);
         return result;
     }
 
@@ -31,11 +31,11 @@ public class PageResp<T> {
         this.total = total;
     }
 
-    public List<T> getList() {
-        return list;
+    public List<T> getData() {
+        return data;
     }
 
-    public void setList(List<T> list) {
-        this.list = list;
+    public void setData(List<T> data) {
+        this.data = data;
     }
 }

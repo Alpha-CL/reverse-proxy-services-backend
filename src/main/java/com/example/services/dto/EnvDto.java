@@ -7,8 +7,6 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@Data
 public class EnvDto {
 
     private int id;

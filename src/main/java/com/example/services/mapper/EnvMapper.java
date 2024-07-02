@@ -28,4 +28,6 @@ public interface EnvMapper {
             @Param("offset") int offset,
             @Param("queryCondition") String queryCondition
     );
+
+    Long getEnvsTotal();
 }

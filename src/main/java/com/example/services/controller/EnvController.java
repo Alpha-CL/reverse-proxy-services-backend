@@ -62,7 +62,7 @@ public class EnvController {
     }
 
     @GetMapping("/list")
-    public Resp<List<EnvDto>> getEnvsByPage(
+    public Resp<PageResp<EnvDto>> getEnvsByPage(
             @RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
             @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
             @RequestParam(required = false) String queryCondition
