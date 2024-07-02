@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.services.mapper.EnvMapper">
-
     <resultMap id="Env" type="com.example.services.entity.Env">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
@@ -15,34 +14,26 @@
 
     <insert id="addEnv" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO `envs`
-            ( `name` )
-        VALUES
-            ( #{env.name} )
+            (`name`)
+        VALUES (#{env.name})
     </insert>
 
     <delete id="deleteEnvById" parameterType="java.lang.Long">
         DELETE
-        FROM
-            `envs`
-        WHERE
-            `id` = #{id}
+        FROM `envs`
+        WHERE `id` = #{id}
     </delete>
 
     <update id="updateEnvById" parameterType="com.example.services.entity.Env">
-        UPDATE
-            `envs`
-        SET
-            `name` = #{name}
-        WHERE `id` = #{id}
+        UPDATE `envs`
+        SET `name` = #{env.name}
+        WHERE `id` = #{env.id}
     </update>
 
     <select id="getEnvById" resultMap="Env">
-        SELECT
-            *
-        FROM
-            `envs`
-        WHERE
-            `id` = #{id}
+        SELECT *
+        FROM `envs`
+        WHERE `id` = #{id}
     </select>
 
     <insert id="batchAddEnvs" parameterType="java.util.List">
@@ -60,20 +51,16 @@
         `envs`
         WHERE
         `id` IN
-        <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
-            #{item}
+        <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+            #{id}
         </foreach>
     </delete>
 
     <update id="batchUpdateEnvs" parameterType="java.util.List">
-        UPDATE
-        `envs`
-        SET
-        `name` = #{name}
-        WHERE
-        `id` IN
-        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
-            #{item}
+        <foreach collection="envList" item="env" index="index" separator=";">
+            UPDATE envs
+            SET name = #{env.name}
+            WHERE id = #{env.id}
         </foreach>
     </update>
 
@@ -89,5 +76,4 @@
         </if>
         LIMIT #{pageSize} OFFSET #{offset}
     </select>
-
 </mapper>

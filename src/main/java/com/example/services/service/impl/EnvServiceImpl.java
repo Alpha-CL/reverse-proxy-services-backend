@@ -53,7 +53,7 @@ public class EnvServiceImpl implements EnvService {
 
     @Override
     public void batchAddEnvs(List<Env> envList) {
-         envMapper.batchAddEnvs(envList);
+        envMapper.batchAddEnvs(envList);
     }
 
     @Override
@@ -63,6 +63,7 @@ public class EnvServiceImpl implements EnvService {
 
     @Override
     public void batchUpdateEnvs(List<Env> envList) {
+        System.out.println("envList = " + envList);
         envMapper.batchUpdateEnvs(envList);
     }
 
@@ -84,5 +85,4 @@ public class EnvServiceImpl implements EnvService {
                 .collect(Collectors.toList());
         return envDtoList;
     }
-
 }

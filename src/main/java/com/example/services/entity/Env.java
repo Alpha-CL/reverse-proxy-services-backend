@@ -9,8 +9,6 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@Data
 public class Env implements Serializable {
 
     private int id;
