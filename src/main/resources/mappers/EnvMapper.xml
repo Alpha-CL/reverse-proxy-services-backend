@@ -16,7 +16,7 @@
     <insert id="addEnv" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO `envs`
             (`name`)
-        VALUES (#{name})
+        VALUES (#{env.name})
     </insert>
 
     <delete id="deleteEnvById" parameterType="java.lang.Long">
