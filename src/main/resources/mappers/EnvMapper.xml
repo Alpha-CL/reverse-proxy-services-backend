@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.services.mapper.EnvMapper">
+
     <resultMap id="Env" type="com.example.services.entity.Env">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
@@ -15,7 +16,7 @@
     <insert id="addEnv" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO `envs`
             (`name`)
-        VALUES (#{env.name})
+        VALUES (#{name})
     </insert>
 
     <delete id="deleteEnvById" parameterType="java.lang.Long">
@@ -25,7 +26,8 @@
     </delete>
 
     <update id="updateEnvById" parameterType="com.example.services.entity.Env">
-        UPDATE `envs`
+        UPDATE
+            `envs`
         SET `name` = #{env.name}
         WHERE `id` = #{env.id}
     </update>
@@ -40,8 +42,8 @@
         INSERT INTO `envs`
         ( `name` )
         VALUES
-        <foreach item="item" index="index" collection="envList" separator=",">
-            (#{item.name})
+        <foreach item="env" index="index" collection="envList" separator=",">
+            ( #{env.name} )
         </foreach>
     </insert>
 
@@ -58,9 +60,9 @@
 
     <update id="batchUpdateEnvs" parameterType="java.util.List">
         <foreach collection="envList" item="env" index="index" separator=";">
-            UPDATE envs
-            SET name = #{env.name}
-            WHERE id = #{env.id}
+            UPDATE `envs`
+            SET `name` = #{env.name}
+            WHERE `id` = #{env.id}
         </foreach>
     </update>
 
@@ -76,4 +78,5 @@
         </if>
         LIMIT #{pageSize} OFFSET #{offset}
     </select>
+
 </mapper>
