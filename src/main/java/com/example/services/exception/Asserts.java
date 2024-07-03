@@ -1,6 +1,6 @@
 package com.example.services.exception;
 
-import com.example.services.controller.IErrorCode;
+import com.example.services.common.Resp.IErrorCode;
 
 /**
  * 断言处理类，用于抛出各种API异常

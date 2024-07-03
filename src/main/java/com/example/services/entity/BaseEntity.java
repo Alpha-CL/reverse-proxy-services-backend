@@ -10,11 +10,8 @@ import java.util.Date;
 public class BaseEntity {
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
-    private Date createDate;
+    private Date createTime;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
-    private Date modifyDate;
-
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
-    private Date deleteDate;
+    private Date updateTime;
 }

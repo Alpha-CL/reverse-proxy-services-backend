@@ -1,6 +1,6 @@
 package com.example.services.exception;
 
-import com.example.services.controller.IErrorCode;
+import com.example.services.common.Resp.IErrorCode;
 
 /**
  * 自定义API异常

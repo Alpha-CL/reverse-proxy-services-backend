@@ -1,7 +1,7 @@
 package com.example.services.exception;
 
 
-import com.example.services.controller.Resp;
+import com.example.services.common.Resp.Resp;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
