@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.services.mapper.ServerMapper">
+
+    <resultMap id="Server" type="com.example.services.entity.Server">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <parameterMap id="Server" type="com.example.services.entity.Server">
+        <parameter property="id"/>
+        <parameter property="name"/>
+    </parameterMap>
+
+    <insert id="addServer" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `servers`
+            (`name`)
+        VALUES (#{server.name})
+    </insert>
+
+    <delete id="deleteServerById" parameterType="java.lang.Long">
+        DELETE
+        FROM `servers`
+        WHERE `id` = #{id}
+    </delete>
+
+    <update id="updateServerById" parameterType="com.example.services.entity.Server">
+        UPDATE
+            `servers`
+        SET `name` = #{server.name}
+        WHERE `id` = #{server.id}
+    </update>
+
+    <select id="getServerById" resultMap="Server">
+        SELECT *
+        FROM `servers`
+        WHERE `id` = #{id}
+    </select>
+
+    <insert id="batchAddServers" parameterType="java.util.List">
+        INSERT INTO `servers`
+        ( `name` )
+        VALUES
+        <foreach item="server" index="index" collection="envList" separator=",">
+            ( #{server.name} )
+        </foreach>
+    </insert>
+
+    <delete id="batchDeleteServers" parameterType="java.util.List">
+        DELETE
+        FROM
+        `servers`
+        WHERE
+        `id` IN
+        <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="batchUpdateServers" parameterType="java.util.List">
+        <foreach collection="serverList" item="server" index="index" separator=";">
+            UPDATE `servers`
+            SET `name` = #{server.name}
+            WHERE `id` = #{server.id}
+        </foreach>
+    </update>
+
+    <select id="getServersByPage" resultMap="Server">
+        SELECT
+        *
+        FROM
+        `servers`
+        WHERE
+        1 = 1
+        <if test="queryCondition != null and queryCondition != ''">
+            AND `name` LIKE CONCAT('%', #{queryCondition}, '%')
+        </if>
+        ORDER BY `update_time` DESC
+        LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
+    <select id="getServersTotal" resultType="java.lang.Long">
+        SELECT COUNT(*)
+        FROM `servers`
+    </select>
+
+</mapper>
