@@ -76,6 +76,7 @@
         <if test="queryCondition != null and queryCondition != ''">
             AND name LIKE CONCAT(#{queryCondition}, '%')
         </if>
+        ORDER BY update_time DESC
         LIMIT #{pageSize} OFFSET #{offset}
     </select>
 
