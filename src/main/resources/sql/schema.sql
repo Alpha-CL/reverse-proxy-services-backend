@@ -1,6 +1,6 @@
-
 SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
+SET
+FOREIGN_KEY_CHECKS = 0;
 
 -- ---------------------------------------------------------------------------------------------------------------------
 -- Table structure for envs
@@ -10,11 +10,10 @@ DROP TABLE
     EXISTS `envs`;
 CREATE TABLE `envs`
 (
-    `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `name`       VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
-    `create_date` DATETIME                                                      DEFAULT NULL COMMENT '创建时间',
-    `modify_date` DATETIME                                                      DEFAULT NULL COMMENT '修改时间',
-    `delete_date` DATETIME                                                      DEFAULT NULL COMMENT '删除时间',
+    `id`          BIGINT    NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `name`        VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
+    `create_time` TIMESTAMP NOT NULL                                            DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` TIMESTAMP NOT NULL                                            DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`),
     UNIQUE KEY `id_unique` (`id`) COMMENT '唯一索引'
 ) ENGINE = InnoDB
@@ -34,13 +33,12 @@ DROP TABLE
     EXISTS `servers`;
 CREATE TABLE `servers`
 (
-    `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `name`       VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
+    `id`          BIGINT    NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `name`        VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
     `protocol`    VARCHAR(255)                                                  DEFAULT NULL COMMENT '协议',
     `domain`      VARCHAR(255)                                                  DEFAULT NULL COMMENT '域名',
-    `create_date` DATETIME                                                      DEFAULT NULL COMMENT '创建时间',
-    `modify_date` DATETIME                                                      DEFAULT NULL COMMENT '修改时间',
-    `delete_date` DATETIME                                                      DEFAULT NULL COMMENT '删除时间',
+    `create_time` TIMESTAMP NOT NULL                                            DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` TIMESTAMP NOT NULL                                            DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`),
     UNIQUE KEY `id_unique` (`id`) COMMENT '唯一索引'
 ) ENGINE = InnoDB
@@ -60,12 +58,11 @@ DROP TABLE
     EXISTS `t_envs_servers`;
 CREATE TABLE `t_envs_servers`
 (
-    `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `env_id`      BIGINT NOT NULL COMMENT '外键',
-    `server_id`   BIGINT NOT NULL COMMENT '外键',
-    `create_date` DATETIME DEFAULT NULL COMMENT '创建时间',
-    `modify_date` DATETIME DEFAULT NULL COMMENT '修改时间',
-    `delete_date` DATETIME DEFAULT NULL COMMENT '删除时间',
+    `id`          BIGINT    NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `env_id`      BIGINT    NOT NULL COMMENT '外键',
+    `server_id`   BIGINT    NOT NULL COMMENT '外键',
+    `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`),
     UNIQUE KEY `id_unique` (`id`) COMMENT '唯一索引',
     CONSTRAINT `fk_env_id` FOREIGN KEY (`env_id`) REFERENCES `envs` (`id`),
@@ -87,12 +84,11 @@ DROP TABLE
     EXISTS `services`;
 CREATE TABLE `services`
 (
-    `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `name`       VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
+    `id`          BIGINT    NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `name`        VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
     `port`        BIGINT                                                        DEFAULT NULL COMMENT '端口',
-    `create_date` DATETIME                                                      DEFAULT NULL COMMENT '创建时间',
-    `modify_date` DATETIME                                                      DEFAULT NULL COMMENT '修改时间',
-    `delete_date` DATETIME                                                      DEFAULT NULL COMMENT '删除时间',
+    `create_time` TIMESTAMP NOT NULL                                            DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` TIMESTAMP NOT NULL                                            DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`),
     UNIQUE KEY `id_unique` (`id`) COMMENT '唯一索引'
 ) ENGINE = InnoDB
@@ -112,12 +108,11 @@ DROP TABLE
     EXISTS `service_groups`;
 CREATE TABLE `service_groups`
 (
-    `id`          BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `service_id`  BIGINT NOT NULL COMMENT '外键',
-    `name`       VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
-    `create_date` DATETIME                                                      DEFAULT NULL COMMENT '创建时间',
-    `modify_date` DATETIME                                                      DEFAULT NULL COMMENT '修改时间',
-    `delete_date` DATETIME                                                      DEFAULT NULL COMMENT '删除时间',
+    `id`          BIGINT    NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `service_id`  BIGINT    NOT NULL COMMENT '外键',
+    `name`        VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '名称',
+    `create_time` TIMESTAMP NOT NULL                                            DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` TIMESTAMP NOT NULL                                            DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`),
     UNIQUE KEY `id_unique` (`id`) COMMENT '唯一索引',
     CONSTRAINT `fk_service_id` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`)
@@ -138,12 +133,11 @@ DROP TABLE
     EXISTS `t_servers_service_groups`;
 CREATE TABLE `t_servers_service_groups`
 (
-    `id`               BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `server_id`        BIGINT NOT NULL COMMENT '外键',
-    `service_group_id` BIGINT NOT NULL COMMENT '外键',
-    `create_date`      DATETIME DEFAULT NULL COMMENT '创建时间',
-    `modify_date`      DATETIME DEFAULT NULL COMMENT '修改时间',
-    `delete_date`      DATETIME DEFAULT NULL COMMENT '删除时间',
+    `id`               BIGINT    NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `server_id`        BIGINT    NOT NULL COMMENT '外键',
+    `service_group_id` BIGINT    NOT NULL COMMENT '外键',
+    `create_time`      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time`      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`),
     UNIQUE KEY `id_unique` (`id`) COMMENT '唯一索引',
     CONSTRAINT `fk_server_id_1` FOREIGN KEY (`server_id`) REFERENCES `servers` (`id`),
@@ -157,4 +151,5 @@ CREATE TABLE `t_servers_service_groups`
 -- Records of t_servers_service_groups
 -- ---------------------------------------------------------------------------------------------------------------------
 
-SET FOREIGN_KEY_CHECKS = 1;
+SET
+FOREIGN_KEY_CHECKS = 1;
