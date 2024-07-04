@@ -1,56 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.services.mapper.EnvMapper">
+<mapper namespace="com.example.services.mapper.ServiceMapper">
 
-    <resultMap id="Env" type="com.example.services.entity.Env">
+    <resultMap id="Service" type="com.example.services.entity.Service">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
     </resultMap>
 
-    <parameterMap id="Env" type="com.example.services.entity.Env">
+    <parameterMap id="Service" type="com.example.services.entity.Service">
         <parameter property="id"/>
         <parameter property="name"/>
     </parameterMap>
 
-    <insert id="addEnv" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO `envs`
-            (`name`)
-        VALUES (#{env.name})
+    <insert id="addService" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `services`
+            ( `name` )
+        VALUES
+            ( #{service.name} )
     </insert>
 
-    <delete id="deleteEnvById" parameterType="java.lang.Long">
+    <delete id="deleteServiceById" parameterType="java.lang.Long">
         DELETE
-        FROM `envs`
-        WHERE `id` = #{id}
+        FROM
+            `services`
+        WHERE
+            `id` = #{id}
     </delete>
 
-    <update id="updateEnvById" parameterType="com.example.services.entity.Env">
+    <update id="updateServiceById" parameterType="com.example.services.entity.Service">
         UPDATE
-            `envs`
-        SET `name` = #{env.name}
-        WHERE `id` = #{env.id}
+            `services`
+        SET
+            `name` = #{service.name}
+        WHERE
+            `id` = #{service.id}
     </update>
 
-    <select id="getEnvById" resultMap="Env">
-        SELECT *
-        FROM `envs`
-        WHERE `id` = #{id}
+    <select id="getServiceById" resultMap="Service">
+        SELECT
+            *
+        FROM
+            `services`
+        WHERE
+            `id` = #{id}
     </select>
 
-    <insert id="batchAddEnvs" parameterType="java.util.List">
-        INSERT INTO `envs`
+    <insert id="batchAddServices" parameterType="java.util.List">
+        INSERT INTO `services`
         ( `name` )
         VALUES
-        <foreach item="env" index="index" collection="envList" separator=",">
-            ( #{env.name} )
+        <foreach item="service" index="index" collection="envList" separator=",">
+            ( #{service.name} )
         </foreach>
     </insert>
 
-    <delete id="batchDeleteEnvs" parameterType="java.util.List">
+    <delete id="batchDeleteServices" parameterType="java.util.List">
         DELETE
         FROM
-        `envs`
+        `services`
         WHERE
         `id` IN
         <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
@@ -58,19 +66,19 @@
         </foreach>
     </delete>
 
-    <update id="batchUpdateEnvs" parameterType="java.util.List">
-        <foreach collection="envList" item="env" index="index" separator=";">
-            UPDATE `envs`
-            SET `name` = #{env.name}
-            WHERE `id` = #{env.id}
+    <update id="batchUpdateServices" parameterType="java.util.List">
+        <foreach collection="serviceList" item="service" index="index" separator=";">
+            UPDATE `services`
+            SET `name` = #{service.name}
+            WHERE `id` = #{service.id}
         </foreach>
     </update>
 
-    <select id="getEnvsByPage" resultMap="Env">
+    <select id="getServicesByPage" resultMap="Service">
         SELECT
         *
         FROM
-        `envs`
+        `services`
         WHERE
         1 = 1
         <if test="queryCondition != null and queryCondition != ''">
@@ -80,11 +88,11 @@
         LIMIT #{pageSize} OFFSET #{offset}
     </select>
 
-    <select id="getEnvsTotal" resultType="java.lang.Long">
+    <select id="getServicesTotal" resultType="java.lang.Long">
         SELECT
             COUNT(*)
         FROM
-            `envs`
+            `services`
     </select>
 
 </mapper>

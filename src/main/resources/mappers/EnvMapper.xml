@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.services.mapper.EnvMapper">
+
+    <resultMap id="Env" type="com.example.services.entity.Env">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <parameterMap id="Env" type="com.example.services.entity.Env">
+        <parameter property="id"/>
+        <parameter property="name"/>
+    </parameterMap>
+
+    <insert id="addEnv" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `envs`
+            (`name`)
+        VALUES (#{env.name})
+    </insert>
+
+    <delete id="deleteEnvById" parameterType="java.lang.Long">
+        DELETE
+        FROM `envs`
+        WHERE `id` = #{id}
+    </delete>
+
+    <update id="updateEnvById" parameterType="com.example.services.entity.Env">
+        UPDATE
+            `envs`
+        SET `name` = #{env.name}
+        WHERE `id` = #{env.id}
+    </update>
+
+    <select id="getEnvById" resultMap="Env">
+        SELECT *
+        FROM `envs`
+        WHERE `id` = #{id}
+    </select>
+
+    <insert id="batchAddEnvs" parameterType="java.util.List">
+        INSERT INTO `envs`
+        ( `name` )
+        VALUES
+        <foreach item="env" index="index" collection="envList" separator=",">
+            ( #{env.name} )
+        </foreach>
+    </insert>
+
+    <delete id="batchDeleteEnvs" parameterType="java.util.List">
+        DELETE
+        FROM
+        `envs`
+        WHERE
+        `id` IN
+        <foreach item="id" index="index" collection="ids" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="batchUpdateEnvs" parameterType="java.util.List">
+        <foreach collection="envList" item="env" index="index" separator=";">
+            UPDATE `envs`
+            SET `name` = #{env.name}
+            WHERE `id` = #{env.id}
+        </foreach>
+    </update>
+
+    <select id="getEnvsByPage" resultMap="Env">
+        SELECT
+        *
+        FROM
+        `envs`
+        WHERE
+        1 = 1
+        <if test="queryCondition != null and queryCondition != ''">
+            AND `name` LIKE CONCAT('%', #{queryCondition}, '%')
+        </if>
+        ORDER BY `update_time` DESC
+        LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
+    <select id="getEnvsTotal" resultType="java.lang.Long">
+        SELECT
+            COUNT(*)
+        FROM
+            `envs`
+    </select>
+
+</mapper>
