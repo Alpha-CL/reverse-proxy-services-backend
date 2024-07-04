@@ -1,6 +1,7 @@
 package com.example.services.mapper;
 
 
+import com.example.services.dto.ServerDto;
 import com.example.services.entity.Server;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -12,7 +13,7 @@ import java.util.List;
 @Mapper
 public interface ServerMapper {
 
-    void addServer(@Param("server") Server server);
+    void addServer(@Param("server") ServerDto server);
 
     void deleteServerById(@Param("id") Long id);
 

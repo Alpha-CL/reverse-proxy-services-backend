@@ -14,7 +14,7 @@ import java.io.Serializable;
 @ToString
 public class Env implements Serializable {
 
-    private int id;
+    private Long id;
 
     @NotBlank(message = "name 不能为空")
     private String name;

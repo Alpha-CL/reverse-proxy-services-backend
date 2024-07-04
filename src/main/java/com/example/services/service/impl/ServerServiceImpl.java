@@ -26,7 +26,7 @@ public class ServerServiceImpl implements ServerService {
 
     @Override
     @Transactional
-    public void addServer(Server server) {
+    public void addServer(ServerDto server) {
         serverMapper.addServer(server);
     }
 

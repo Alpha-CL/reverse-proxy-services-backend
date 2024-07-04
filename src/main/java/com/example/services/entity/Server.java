@@ -3,6 +3,7 @@ package com.example.services.entity;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -11,8 +12,13 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class Server {
 
-    private int id;
+    private Long id;
 
-    @NotBlank(message = "name 不能为空")
+    @NotBlank(message = "名称不能为空")
     private String name;
+
+    private String protocol;
+
+    @NotBlank(message = "域名不能为空")
+    private String domain;
 }

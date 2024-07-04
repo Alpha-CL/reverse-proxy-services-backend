@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class Service {
 
-    private int id;
+    private Long id;
 
     @NotBlank(message = "name 不能为空")
     private String name;

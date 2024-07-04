@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ServerService {
 
-    void addServer(Server server);
+    void addServer(ServerDto server);
 
     void deleteServerById(Long id);
 

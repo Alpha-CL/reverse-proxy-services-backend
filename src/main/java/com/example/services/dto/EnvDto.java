@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 public class EnvDto {
 
-    private int id;
+    private Long id;
 
     private String label;
 }

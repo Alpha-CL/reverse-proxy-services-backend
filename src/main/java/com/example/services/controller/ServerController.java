@@ -24,7 +24,7 @@ public class ServerController {
     }
 
     @PostMapping("")
-    public Resp<Void> addServer(@RequestBody Server server) {
+    public Resp<Void> addServer(@RequestBody ServerDto server) {
         serverService.addServer(server);
         return Resp.success();
     }
